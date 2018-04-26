@@ -17,6 +17,10 @@
  *   Copyright original Java version: 2004 Bart Du Bois, Serge Demeyer
  *   Copyright C++ version: 2006 Matthias Rieger, Bart Van Rompaey
  */
+
+/*
+ * Autores:
+ * */
 package lanSimulation.tests;
 
 import lanSimulation.internals.*;
