@@ -19,16 +19,22 @@
  */
 
 /*
- * Autores:
+ * Autores: Daniel Hernando y Joseba Hernando
  * */
 package lanSimulation.tests;
 
-import lanSimulation.internals.*;
-import lanSimulation.*;
-import junit.framework.*;
-import junit.extensions.*;
-import java.lang.AssertionError;
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.StringWriter;
+
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+import lanSimulation.Network;
+import lanSimulation.internals.Node;
+import lanSimulation.internals.Packet;
 
 public class LANTests extends TestCase {
 
