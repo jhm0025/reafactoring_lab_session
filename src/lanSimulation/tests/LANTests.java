@@ -35,7 +35,11 @@ import junit.framework.TestSuite;
 import lanSimulation.Network;
 import lanSimulation.internals.Node;
 import lanSimulation.internals.Packet;
-
+/***
+ * 
+ * 
+ * 
+ * */
 public class LANTests extends TestCase {
 
 	public static Test suite() {
