@@ -334,6 +334,7 @@ public class Network {
 		String author = "Unknown";
 		String title = "Untitled";
 		int startPos = 0, endPos = 0;
+		String lenguaje= "Unknown";
 
 		if (printer.type_ == Node.PRINTER) {
 			try {
@@ -360,27 +361,33 @@ public class Network {
 								endPos);
 					}
 					;
+					lenguaje=">>> Postscript job delivered.\n\n";
 					report.write("\tAccounting -- author = '");
 					report.write(author);
 					report.write("' -- title = '");
 					report.write(title);
 					report.write("'\n");
-					report.write(">>> Postscript job delivered.\n\n");
+					//report.write("' -- lenguaje = '");
+					report.write(lenguaje);
 					report.flush();
+					
 				} else {
 					title = "ASCII DOCUMENT";
 					if (document.message_.length() >= 16) {
 						author = document.message_.substring(8, 16);
 					}
 					;
+					lenguaje=">>> ASCII Print job delivered.\n\n";
 					report.write("\tAccounting -- author = '");
 					report.write(author);
 					report.write("' -- title = '");
 					report.write(title);
 					report.write("'\n");
-					report.write(">>> ASCII Print job delivered.\n\n");
+					//report.write("' -- lenguaje = '");
+					report.write(lenguaje);
 					report.flush();
 				}
+				
 				;
 			} catch (IOException exc) {
 				// just ignore
