@@ -20,6 +20,7 @@
 package lanSimulation;
 
 import lanSimulation.internals.*;
+
 import java.util.Hashtable;
 import java.util.Enumeration;
 import java.io.*;
@@ -298,6 +299,7 @@ public class Network {
 			// just ignore
 		}
 		;
+		
 		currentNode = startNode.nextNode_;
 		while ((!packet.destination_.equals(currentNode.name_))
 				& (!packet.origin_.equals(currentNode.name_))) {
@@ -362,14 +364,7 @@ public class Network {
 					}
 					;
 					lenguaje=">>> Postscript job delivered.\n\n";
-					report.write("\tAccounting -- author = '");
-					report.write(author);
-					report.write("' -- title = '");
-					report.write(title);
-					report.write("'\n");
-					//report.write("' -- lenguaje = '");
-					report.write(lenguaje);
-					report.flush();
+					accouting(report, author, title, lenguaje);
 					
 				} else {
 					title = "ASCII DOCUMENT";
@@ -378,14 +373,7 @@ public class Network {
 					}
 					;
 					lenguaje=">>> ASCII Print job delivered.\n\n";
-					report.write("\tAccounting -- author = '");
-					report.write(author);
-					report.write("' -- title = '");
-					report.write(title);
-					report.write("'\n");
-					//report.write("' -- lenguaje = '");
-					report.write(lenguaje);
-					report.flush();
+					accouting(report, author, title, lenguaje);
 				}
 				
 				;
@@ -404,6 +392,18 @@ public class Network {
 			;
 			return false;
 		}
+	}
+
+	private void accouting(Writer report, String author, String title,
+			String lenguaje) throws IOException {
+		report.write("\tAccounting -- author = '");
+		report.write(author);
+		report.write("' -- title = '");
+		report.write(title);
+		report.write("'\n");
+		//report.write("' -- lenguaje = '");
+		report.write(lenguaje);
+		report.flush();
 	}
 
 	/**
