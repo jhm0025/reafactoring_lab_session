@@ -67,7 +67,14 @@ public class Node {
 	public Node(byte type, String name) {
 		assert (type >= NODE) & (type <= PRINTER);
 		setType(type);
-		name_ = name;
+		setName(name);
+		setNextNode_();
+	}
+
+	/**
+	 * 
+	 */
+	public void setNextNode_() {
 		nextNode_ = null;
 	}
 
@@ -81,8 +88,15 @@ public class Node {
 	public Node(byte type, String name, Node nextNode) {
 		assert (type >= NODE) & (type <= PRINTER);
 		setType(type);
-		name_ = name;
+		setName(name);
 		nextNode_ = nextNode;
+	}
+
+	/**
+	 * @param name
+	 */
+	public void setName(String name) {
+		name_ = name;
 	}
 
 	private void setType(byte type) {
