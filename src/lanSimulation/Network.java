@@ -358,7 +358,7 @@ public class Network {
 		assert isInitialized();
 		Node currentNode = firstNode_;
 		do {
-			printOn(buf, currentNode);
+			currentNode.printOn(buf, this);
 			;
 			buf.append(" -> ");
 			currentNode = currentNode.atDestination(this);
@@ -380,7 +380,7 @@ public class Network {
 		buf.append("\n\n<UL>");
 		do {
 			buf.append("\n\t<LI> ");
-			printOn(buf, currentNode);
+			currentNode.printOn(buf, this);
 			;
 			buf.append(" </LI>");
 			currentNode = currentNode.atDestination(this);
@@ -401,55 +401,10 @@ public class Network {
 		buf.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<network>");
 		do {
 			buf.append("\n\t");
-			printXMLOn(buf, currentNode);
+			currentNode.printXMLOn(buf, this);
 			currentNode = currentNode.atDestination(this);
 		} while (currentNode != firstNode_);
 		buf.append("\n</network>");
-	}
-
-	/**
-	 * @param buf
-	 * @param node TODO
-	 */
-	public void printXMLOn(StringBuffer buf, Node node) {
-		switch (node.getType()) {
-		case Node.NODE:
-			node.printXMLOnNode(buf);
-			break;
-		case Node.WORKSTATION:
-			node.printXMLOnWorkstation(buf);
-			break;
-		case Node.PRINTER:
-			node.printXMLOnPrinter(buf);
-			break;
-		default:
-			buf.append("<unknown></unknown>");
-			;
-			break;
-		}
-		;
-	}
-
-	/**
-	 * @param buf
-	 * @param node TODO
-	 */
-	public void printOn(StringBuffer buf, Node node) {
-		switch (node.getType()) {
-		case Node.NODE:
-			node.printOnNode(buf);
-			break;
-		case Node.WORKSTATION:
-			node.printOnWorkstation(buf);
-			break;
-		case Node.PRINTER:
-			node.printOnPrinter(buf);
-			break;
-		default:
-			buf.append("(Unexpected)");
-			;
-			break;
-		}
 	}
 
 }
