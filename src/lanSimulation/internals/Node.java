@@ -66,7 +66,7 @@ public class Node {
 	 */
 	public Node(byte type, String name) {
 		assert (type >= NODE) & (type <= PRINTER);
-		type_ = type;
+		setType(type);
 		name_ = name;
 		nextNode_ = null;
 	}
@@ -80,9 +80,13 @@ public class Node {
 	 */
 	public Node(byte type, String name, Node nextNode) {
 		assert (type >= NODE) & (type <= PRINTER);
-		type_ = type;
+		setType(type);
 		name_ = name;
 		nextNode_ = nextNode;
+	}
+
+	private void setType(byte type) {
+		type_ = type;
 	}
 
 	public void logging(Writer report, Network network) throws IOException {
@@ -107,7 +111,7 @@ public class Node {
 	 * @param network TODO
 	 */
 	public void printOn(StringBuffer buf, Network network) {
-		switch (type_) {
+		switch (getType()) {
 		case Node.NODE:
 			printOnNode(buf);
 			break;
@@ -122,6 +126,10 @@ public class Node {
 			;
 			break;
 		}
+	}
+
+	private byte getType() {
+		return type_;
 	}
 
 	private void printOnPrinter(StringBuffer buf) {
@@ -147,7 +155,7 @@ public class Node {
 	 * @param network TODO
 	 */
 	public void printXMLOn(StringBuffer buf, Network network) {
-		switch (type_) {
+		switch (getType()) {
 		case Node.NODE:
 			printXMLOnNode(buf);
 			break;
