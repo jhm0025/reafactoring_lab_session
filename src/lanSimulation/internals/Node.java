@@ -50,7 +50,7 @@ public class Node {
 	/**
 	 * Holds the name of the Node.
 	 */
-	public String name_;
+	public static String name_;
 	/**
 	 * Holds the next Node in the token ring architecture.
 	 * 
@@ -127,13 +127,13 @@ public class Node {
 	public void printOn(StringBuffer buf, Network network) {
 		switch (getType()) {
 		case Node.NODE:
-			printOnNode(buf);
+			Printer.printOnNode(buf);
 			break;
 		case Node.WORKSTATION:
-			printOnWorkstation(buf);
+			Workstation.printOnWorkstation(buf);
 			break;
 		case Node.PRINTER:
-			printOnPrinter(buf);
+			Printer.printOnPrinter(buf);
 			break;
 		default:
 			buf.append("(Unexpected)");
@@ -146,23 +146,7 @@ public class Node {
 		return type_;
 	}
 
-	private void printOnPrinter(StringBuffer buf) {
-		buf.append("Printer ");
-		buf.append(name_);
-		buf.append(" [Printer]");
-	}
-
-	private void printOnWorkstation(StringBuffer buf) {
-		buf.append("Workstation ");
-		buf.append(name_);
-		buf.append(" [Workstation]");
-	}
-
-	private void printOnNode(StringBuffer buf) {
-		buf.append("Node ");
-		buf.append(name_);
-		buf.append(" [Node]");
-	}
+	
 
 	/**
 	 * @param buf
@@ -171,13 +155,13 @@ public class Node {
 	public void printXMLOn(StringBuffer buf, Network network) {
 		switch (getType()) {
 		case Node.NODE:
-			printXMLOnNode(buf);
+			Printer.printXMLOnNode(buf);
 			break;
 		case Node.WORKSTATION:
-			printXMLOnWorkstation(buf);
+			Workstation.printXMLOnWorkstation(buf);
 			break;
 		case Node.PRINTER:
-			printXMLOnPrinter(buf);
+			Printer.printXMLOnPrinter(buf);
 			break;
 		default:
 			buf.append("<unknown></unknown>");
@@ -187,22 +171,6 @@ public class Node {
 		;
 	}
 
-	private void printXMLOnPrinter(StringBuffer buf) {
-		buf.append("<printer>");
-		buf.append(name_);
-		buf.append("</printer>");
-	}
-
-	private void printXMLOnWorkstation(StringBuffer buf) {
-		buf.append("<workstation>");
-		buf.append(name_);
-		buf.append("</workstation>");
-	}
-
-	private void printXMLOnNode(StringBuffer buf) {
-		buf.append("<node>");
-		buf.append(name_);
-		buf.append("</node>");
-	}
+	
 
 }
