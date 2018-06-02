@@ -46,7 +46,7 @@ public class Node {
 	/**
 	 * Holds the type of the Node.
 	 */
-	public byte type_;
+	
 	/**
 	 * Holds the name of the Node.
 	 */
@@ -66,7 +66,7 @@ public class Node {
 	 */
 	public Node(byte type, String name) {
 		assert (type >= NODE) & (type <= PRINTER);
-		setType(type);
+		
 		setName(name);
 		setNextNode_();
 	}
@@ -87,7 +87,7 @@ public class Node {
 	 */
 	public Node(byte type, String name, Node nextNode) {
 		assert (type >= NODE) & (type <= PRINTER);
-		setType(type);
+		
 		setName(name);
 		nextNode_ = nextNode;
 	}
@@ -99,9 +99,7 @@ public class Node {
 		name_ = name;
 	}
 
-	private void setType(byte type) {
-		type_ = type;
-	}
+	
 
 	public void logging(Writer report, Network network) throws IOException {
 		report.write("\tNode '");
@@ -120,86 +118,39 @@ public class Node {
 		return currentNode;
 	}
 
-	/**
-	 * @param buf
-	 * @param network TODO
-	 */
-	public void printOn(StringBuffer buf, Network network) {
-		switch (getType()) {
-		case Node.NODE:
-			printOnNode(buf);
-			break;
-		case Node.WORKSTATION:
-			printOnWorkstation(buf);
-			break;
-		case Node.PRINTER:
-			printOnPrinter(buf);
-			break;
-		default:
-			buf.append("(Unexpected)");
-			;
-			break;
-		}
-	}
+	
 
-	private byte getType() {
-		return type_;
-	}
-
-	private void printOnPrinter(StringBuffer buf) {
+	public void printOnPrinter(StringBuffer buf) {
 		buf.append("Printer ");
 		buf.append(name_);
 		buf.append(" [Printer]");
 	}
 
-	private void printOnWorkstation(StringBuffer buf) {
+	public void printOnWorkstation(StringBuffer buf) {
 		buf.append("Workstation ");
 		buf.append(name_);
 		buf.append(" [Workstation]");
 	}
 
-	private void printOnNode(StringBuffer buf) {
+	public void printOnNode(StringBuffer buf) {
 		buf.append("Node ");
 		buf.append(name_);
 		buf.append(" [Node]");
 	}
 
-	/**
-	 * @param buf
-	 * @param network TODO
-	 */
-	public void printXMLOn(StringBuffer buf, Network network) {
-		switch (getType()) {
-		case Node.NODE:
-			printXMLOnNode(buf);
-			break;
-		case Node.WORKSTATION:
-			printXMLOnWorkstation(buf);
-			break;
-		case Node.PRINTER:
-			printXMLOnPrinter(buf);
-			break;
-		default:
-			buf.append("<unknown></unknown>");
-			;
-			break;
-		}
-		;
-	}
-
-	private void printXMLOnPrinter(StringBuffer buf) {
+	public void printXMLOnPrinter(StringBuffer buf) {
 		buf.append("<printer>");
 		buf.append(name_);
 		buf.append("</printer>");
 	}
 
-	private void printXMLOnWorkstation(StringBuffer buf) {
+	public void printXMLOnWorkstation(StringBuffer buf) {
 		buf.append("<workstation>");
 		buf.append(name_);
 		buf.append("</workstation>");
 	}
 
-	private void printXMLOnNode(StringBuffer buf) {
+	public void printXMLOnNode(StringBuffer buf) {
 		buf.append("<node>");
 		buf.append(name_);
 		buf.append("</node>");
