@@ -92,4 +92,14 @@ public class Node {
 		report.flush();
 	}
 
+	/**
+	 * @param network TODO
+	 * @return
+	 */
+	public Node atDestination(Network network) {
+		Node currentNode;
+		currentNode = nextNode_;
+		return currentNode;
+	}
+
 }

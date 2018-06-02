@@ -174,7 +174,7 @@ public class Network {
 				printersFound++;
 			}
 			;
-			currentNode = currentNode.nextNode_;
+			currentNode = currentNode.atDestination(this);
 		}
 		;
 		if (currentNode != firstNode_) {
@@ -230,7 +230,7 @@ public class Network {
 				// just ignore
 			}
 			;
-			currentNode = currentNode.nextNode_;
+			currentNode = currentNode.atDestination(this);
 		} while (!packet.destination_.equals(currentNode.name_));
 
 		try {
@@ -294,7 +294,7 @@ public class Network {
 		}
 		;
 		
-		currentNode = startNode.nextNode_;
+		currentNode = startNode.atDestination(this);
 		while ((!packet.destination_.equals(currentNode.name_))
 				& (!packet.origin_.equals(currentNode.name_))) {
 			try {
@@ -303,7 +303,7 @@ public class Network {
 				// just ignore
 			}
 			;
-			currentNode = currentNode.nextNode_;
+			currentNode = currentNode.atDestination(this);
 		}
 		;
 
@@ -381,7 +381,7 @@ public class Network {
 			}
 			;
 			buf.append(" -> ");
-			currentNode = currentNode.nextNode_;
+			currentNode = currentNode.atDestination(this);
 		} while (currentNode != firstNode_);
 		buf.append(" ... ");
 	}
@@ -423,7 +423,7 @@ public class Network {
 			}
 			;
 			buf.append(" </LI>");
-			currentNode = currentNode.nextNode_;
+			currentNode = currentNode.atDestination(this);
 		} while (currentNode != firstNode_);
 		buf.append("\n\t<LI>...</LI>\n</UL>\n\n</BODY>\n</HTML>\n");
 	}
@@ -463,7 +463,7 @@ public class Network {
 				break;
 			}
 			;
-			currentNode = currentNode.nextNode_;
+			currentNode = currentNode.atDestination(this);
 		} while (currentNode != firstNode_);
 		buf.append("\n</network>");
 	}
