@@ -109,25 +109,37 @@ public class Node {
 	public void printOn(StringBuffer buf, Network network) {
 		switch (type_) {
 		case Node.NODE:
-			buf.append("Node ");
-			buf.append(name_);
-			buf.append(" [Node]");
+			printOnNode(buf);
 			break;
 		case Node.WORKSTATION:
-			buf.append("Workstation ");
-			buf.append(name_);
-			buf.append(" [Workstation]");
+			printOnWorkstation(buf);
 			break;
 		case Node.PRINTER:
-			buf.append("Printer ");
-			buf.append(name_);
-			buf.append(" [Printer]");
+			printOnPrinter(buf);
 			break;
 		default:
 			buf.append("(Unexpected)");
 			;
 			break;
 		}
+	}
+
+	private void printOnPrinter(StringBuffer buf) {
+		buf.append("Printer ");
+		buf.append(name_);
+		buf.append(" [Printer]");
+	}
+
+	private void printOnWorkstation(StringBuffer buf) {
+		buf.append("Workstation ");
+		buf.append(name_);
+		buf.append(" [Workstation]");
+	}
+
+	private void printOnNode(StringBuffer buf) {
+		buf.append("Node ");
+		buf.append(name_);
+		buf.append(" [Node]");
 	}
 
 	/**
@@ -137,19 +149,13 @@ public class Node {
 	public void printXMLOn(StringBuffer buf, Network network) {
 		switch (type_) {
 		case Node.NODE:
-			buf.append("<node>");
-			buf.append(name_);
-			buf.append("</node>");
+			printXMLOnNode(buf);
 			break;
 		case Node.WORKSTATION:
-			buf.append("<workstation>");
-			buf.append(name_);
-			buf.append("</workstation>");
+			printXMLOnWorkstation(buf);
 			break;
 		case Node.PRINTER:
-			buf.append("<printer>");
-			buf.append(name_);
-			buf.append("</printer>");
+			printXMLOnPrinter(buf);
 			break;
 		default:
 			buf.append("<unknown></unknown>");
@@ -157,6 +163,24 @@ public class Node {
 			break;
 		}
 		;
+	}
+
+	private void printXMLOnPrinter(StringBuffer buf) {
+		buf.append("<printer>");
+		buf.append(name_);
+		buf.append("</printer>");
+	}
+
+	private void printXMLOnWorkstation(StringBuffer buf) {
+		buf.append("<workstation>");
+		buf.append(name_);
+		buf.append("</workstation>");
+	}
+
+	private void printXMLOnNode(StringBuffer buf) {
+		buf.append("<node>");
+		buf.append(name_);
+		buf.append("</node>");
 	}
 
 }
