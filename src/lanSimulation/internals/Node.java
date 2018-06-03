@@ -187,19 +187,19 @@ public class Node {
 		;
 	}
 
-	private void printXMLOnPrinter(StringBuffer buf) {
+	public void printXMLOnPrinter(StringBuffer buf) {
 		buf.append("<printer>");
 		buf.append(name_);
 		buf.append("</printer>");
 	}
 
-	private void printXMLOnWorkstation(StringBuffer buf) {
+	public void printXMLOnWorkstation(StringBuffer buf) {
 		buf.append("<workstation>");
 		buf.append(name_);
 		buf.append("</workstation>");
 	}
 
-	private void printXMLOnNode(StringBuffer buf) {
+	public void printXMLOnNode(StringBuffer buf) {
 		buf.append("<node>");
 		buf.append(name_);
 		buf.append("</node>");
