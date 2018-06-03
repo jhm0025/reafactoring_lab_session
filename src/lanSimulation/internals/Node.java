@@ -146,19 +146,19 @@ public class Node {
 		return type_;
 	}
 
-	private void printOnPrinter(StringBuffer buf) {
+	public void printOnPrinter(StringBuffer buf) {
 		buf.append("Printer ");
 		buf.append(name_);
 		buf.append(" [Printer]");
 	}
 
-	private void printOnWorkstation(StringBuffer buf) {
+	public void printOnWorkstation(StringBuffer buf) {
 		buf.append("Workstation ");
 		buf.append(name_);
 		buf.append(" [Workstation]");
 	}
 
-	private void printOnNode(StringBuffer buf) {
+	public void printOnNode(StringBuffer buf) {
 		buf.append("Node ");
 		buf.append(name_);
 		buf.append(" [Node]");
